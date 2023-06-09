@@ -1,25 +1,23 @@
+import { UseContextData } from '../../context/context';
 import ProductCard from '../Product';
-import { ProductsLista } from './style';
 
-const ProductsList = ({
-    itensList,
-    filteredProducts,
-    setCurrentCart,
-    currentCart,
-}) => {
+const ProductsList = () => {
+    const { currentCart, filteredProducts, itensList, setCurrentCart } =
+        UseContextData();
+
     return (
-        <ProductsLista>
+        <ul>
             {(filteredProducts.length > 0 ? filteredProducts : itensList).map(
                 product => (
                     <ProductCard
                         product={product}
                         key={product.id}
-                        setCurrentCart={setCurrentCart}
-                        currentCart={currentCart}
+                        // setCurrentCart={setCurrentCart}
+                        // currentCart={currentCart}
                     />
                 )
             )}
-        </ProductsLista>
+        </ul>
     );
 };
 

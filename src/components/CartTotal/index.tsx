@@ -1,8 +1,10 @@
-import { DivPrice } from './style';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { UseContextData } from '../../context/context';
 
-const CartTotal = ({ currentCart, setCurrentCart }) => {
+const CartTotal = () => {
+    const { setCurrentCart, currentCart } = UseContextData();
+
     const notify = () =>
         toast.success('itens removidos com sucesso', {
             autoClose: 1000,
@@ -19,13 +21,13 @@ const CartTotal = ({ currentCart, setCurrentCart }) => {
     }).format(sumPrice);
 
     return (
-        <DivPrice>
+        <div>
             <div>
                 <p>Total</p>
                 <span>{numberFormat}</span>
             </div>
             <button onClick={removeAll}> Remover todos </button>
-        </DivPrice>
+        </div>
     );
 };
 
