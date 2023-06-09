@@ -2,8 +2,11 @@ import { ContainerCarrinho } from './style';
 import { Title, Subtitle } from '../../style/typography';
 import CartProduct from '../CartProduct';
 import CartTotal from '../CartTotal';
+import { UseContextData } from '../../context/context';
 
-const Cart = ({ currentCart, setCurrentCart }) => {
+const Cart = () => {
+    const { currentCart } = UseContextData();
+
     return (
         <>
             <ContainerCarrinho>
@@ -17,9 +20,7 @@ const Cart = ({ currentCart, setCurrentCart }) => {
                                 return (
                                     <CartProduct
                                         product={product}
-                                        currentCart={currentCart}
                                         key={product.id}
-                                        setCurrentCart={setCurrentCart}
                                     />
                                 );
                             })
@@ -31,10 +32,7 @@ const Cart = ({ currentCart, setCurrentCart }) => {
                         )}
                     </ul>
                 </div>
-                <CartTotal
-                    currentCart={currentCart}
-                    setCurrentCart={setCurrentCart}
-                />
+                <CartTotal />
             </ContainerCarrinho>
         </>
     );

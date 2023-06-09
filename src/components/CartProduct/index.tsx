@@ -1,9 +1,12 @@
+import { UseContextData } from '../../context/context';
 import { Subtitle } from '../../style/typography';
 import { Product } from './style';
 import { AiFillDelete } from 'react-icons/ai';
 import { toast } from 'react-toastify';
 
-const CartProduct = ({ product, currentCart, setCurrentCart }) => {
+const CartProduct = ({ product }) => {
+    const { setCurrentCart, currentCart } = UseContextData();
+
     const removeItemFromCart = currentItem => {
         const newList = currentCart.filter(item => item !== currentItem);
         onDelete();
